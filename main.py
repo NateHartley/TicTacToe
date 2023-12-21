@@ -1,22 +1,13 @@
 def game():
     # Init #
-    str1 = "*"
-    str2 = "*"
-    str3 = "*"
-    str4 = "*"
-    str5 = "*"
-    str6 = "*"
-    str7 = "*"
-    str8 = "*"
-    str9 = "*"
+    counter = 0
+    pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9 = "*", "*", "*", "*", "*", "*", "*", "*", "*"
 
     board = [
-            [str1, str2, str3],
-            [str4, str5, str6],
-            [str7, str8, str9]
+            [pos1, pos2, pos3],
+            [pos4, pos5, pos6],
+            [pos7, pos8, pos9]
     ]
-
-    counter = 0
 
     while(True):
         counter += 1
@@ -33,15 +24,14 @@ def game():
         
         # Check for winner
         if winnings(board) == True:
-            print("Win")
+            print("Player 1 wins!") if counter % 2 == 0 else print("Player 2 wins!"); return False
+        
+        # Checks for no available spaces
+        if ("*" not in board[0]) and ("*" not in board[1]) and ("*" not in board[2]):
+            print("No more spaces available, and no winners. GAME OVER!")
             return False
         
-        # ALSO NEED TO CHECK IF ALL SPACES HAVE BEEN USED
-        
-        if counter % 2 == 0:
-            print("-- Player 2's Turn --")
-        else:
-            print("-- Player 1's Turn --")
+        print("-- Player 2's Turn --") if counter % 2 == 0 else print("-- Player 1's Turn --")
 
         # Select row #
         row = int(input("Enter a row number: "))
@@ -77,10 +67,8 @@ def winnings(pos):
         return True
     
     # Diagonals
-    if (((pos[0][0] == pos[1][1] and pos[1][1] == pos[2][2]) or 
-        (pos[2][0] == pos[1][1] and pos[1][1] == pos[0][2])) and
-        (pos[0][0] != "*" and pos[2][0] != "*")):
-        print("DIAGS")
+    if (((pos[0][0] == "X" or pos[0][0] == "O") and (pos[0][0] == pos[1][1] and pos[1][1] == pos[2][2])) or
+        (pos[2][0] == "X" or pos[2][0] == "O") and (pos[2][0] == pos[1][1] and pos[1][1] == pos[0][2])):
         return True
     
     # No win yet
