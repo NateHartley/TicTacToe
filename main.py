@@ -1,7 +1,7 @@
 def game():
     # Init #
     counter = 0
-    pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9 = "*", "*", "*", "*", "*", "*", "*", "*", "*"
+    pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9 = " ", " ", " ", " ", " ", " ", " ", " ", " "
 
     board = [
             [pos1, pos2, pos3],
@@ -14,9 +14,11 @@ def game():
 
         # Board #
         print('''
-            %s %s %s
-            %s %s %s
-            %s %s %s
+             %s | %s | %s
+            ---|---|---
+             %s | %s | %s
+            ---|---|---
+             %s | %s | %s
             ''' 
             % (board[0][0], board[0][1], board[0][2], 
                board[1][0], board[1][1], board[1][2], 
@@ -27,7 +29,7 @@ def game():
             print("Player 1 wins!") if counter % 2 == 0 else print("Player 2 wins!"); return False
         
         # Checks for no available spaces
-        if ("*" not in board[0]) and ("*" not in board[1]) and ("*" not in board[2]):
+        if (" " not in board[0]) and (" " not in board[1]) and (" " not in board[2]):
             print("No more spaces available, and no winners. GAME OVER!")
             return False
         
