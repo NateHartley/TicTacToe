@@ -12,7 +12,7 @@ def game():
     while(True):
         counter += 1
 
-        # Board #
+        # Board
         print('''
              %s | %s | %s
             ---|---|---
@@ -33,20 +33,22 @@ def game():
             print("No more spaces available, and no winners. GAME OVER!")
             return False
         
+        # Turn
         print("-- Player 2's Turn --") if counter % 2 == 0 else print("-- Player 1's Turn --")
 
-        # Select row #
+        # Select row
         row = int(input("Enter a row number: "))
         if row != 1 and row != 2 and row != 3:
             print("This is not a valid row, must be between 1 - 3")
             return False
 
-        # Select column #
+        # Select column
         col = int(input("Enter a column number: "))
         if col != 1 and col != 2 and col != 3:
             print("This is not a valid column, must be between 1 - 3")
             return False
         
+        # Place X / O on available space
         if board[row-1][col-1] == "X" or board[row-1][col-1] == "O":
             print("This space is already taken")
         else:
